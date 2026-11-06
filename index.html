@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Rental - Official Rental Application Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fbf8ef',
+                            100: '#f4ebb8',
+                            500: '#d97706',
+                            600: '#b45309',
+                            700: '#92400e',
+                            900: '#1e293b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .signature-canvas {
+            touch-action: none;
+            cursor: crosshair;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+            }
+            .print-padding {
+                padding: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between bg-slate-50">
+
+    <!-- Top Header / Banner -->
+    <header class="bg-white text-slate-900 border-b border-slate-200 sticky top-0 z-40 shadow-sm no-print">
+        <div class="max-w-5xl mx-auto px-4 py-3.5 flex flex-col md:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-tr from-amber-500 to-amber-400 text-slate-950 p-2.5 rounded-2xl font-bold text-xl flex items-center justify-center shadow-sm">
+                    <i class="fa-solid fa-building-user text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-extrabold tracking-tight text-slate-900">PREMIUM RENTAL</h1>
+                    <p class="text-xs text-amber-600 font-semibold tracking-wide">Verified Real Estate Portal</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold shadow-xs">
+                <i class="fa-solid fa-shield-check text-emerald-600 text-base"></i>
+                <span>100% Government Approved & Secured</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow print-padding">
+
+        <!-- Form Intro Header Card -->
+        <div id="introCard" class="bg-white rounded-3xl shadow-sm border border-slate-200/80 p-6 md:p-8 mb-8 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6 no-print">
+            <div class="space-y-2 max-w-xl">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-gradient-to-r from-emerald-50 to-amber-50 border border-amber-200/80 rounded-full text-xs font-bold text-amber-900">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Official Online Form</span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Tenant Rental Application</h2>
+                <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                    Please complete all required fields below to reserve your desired property.
+                </p>
+            </div>
+            <div class="flex-shrink-0 bg-amber-50/60 border border-amber-200/80 p-4 rounded-2xl text-center min-w-[200px]">
+                <span class="text-xs text-slate-500 block font-semibold uppercase tracking-wider">Fast Processing</span>
+                <span class="text-lg font-extrabold text-amber-900 flex items-center justify-center gap-2 mt-1">
+                    <i class="fa-regular fa-clock text-amber-600"></i> Within 6 Hours
+                </span>
+            </div>
+        </div>
+
+        <!-- Application Form -->
+        <form id="rentalForm" class="space-y-8" onsubmit="handleFormSubmit(event)">
+
+            <!-- SECTION 1: Personal Information -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+                <div class="bg-slate-100/80 px-6 py-4 border-b border-slate-200 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-sm shadow-xs">1</span>
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-user text-amber-600"></i> Personal Information
+                    </h3>
+                </div>
+                <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">First Name <span class="text-red-500">*</span></label>
+                        <input type="text" name="First Name" id="firstName" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-slate-800 bg-white" placeholder="John">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Last Name <span class="text-red-500">*</span></label>
+                        <input type="text" name="Last Name" id="lastName" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-slate-800 bg-white" placeholder="Doe">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Current Address <span class="text-red-500">*</span></label>
+                        <input type="text" name="Current Address" id="currentAddress" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-slate-800 bg-white" placeholder="Street Address, City, State, Zip Code">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Email Address <span class="text-red-500">*</span></label>
+                        <input type="email" name="Email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-slate-800 bg-white" placeholder="john.doe@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Phone Number <span class="text-red-500">*</span></label>
+                        <input type="tel" name="Phone Number" id="phone" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-slate-800 bg-white" placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Gender <span class="text-red-500">*</span></label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <label class="flex items-center justify-center gap-2 p-3.5 border rounded-2xl cursor-pointer transition bg-slate-50/50 hover:bg-slate-100/70 border-slate-300 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/60 has-[:checked]:text-amber-950 font-medium">
+                                <input type="radio" name="Gender" value="Male" required class="accent-amber-600">
+                                <i class="fa-solid fa-mars text-blue-600"></i> Male
+                            </label>
+                            <label class="flex items-center justify-center gap-2 p-3.5 border rounded-2xl cursor-pointer transition bg-slate-50/50 hover:bg-slate-100/70 border-slate-300 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/60 has-[:checked]:text-amber-950 font-medium">
+                                <input type="radio" name="Gender" value="Female" class="accent-amber-600">
+                                <i class="fa-solid fa-venus text-pink-600"></i> Female
+                            </label>
+                            <label class="flex items-center justify-center gap-2 p-3.5 border rounded-2xl cursor-pointer transition bg-slate-50/50 hover:bg-slate-100/70 border-slate-300 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/60 has-[:checked]:text-amber-950 font-medium">
+                                <input type="radio" name="Gender" value="Other" class="accent-amber-600">
+                                <i class="fa-solid fa-genderless text-purple-600"></i> Other
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: Occupancy Details -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+                <div class="bg-slate-100/80 px-6 py-4 border-b border-slate-200 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-sm shadow-xs">2</span>
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-users text-amber-600"></i> Occupancy Details
+                    </h3>
+                </div>
+                <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Total Occupants <span class="text-red-500">*</span></label>
+                        <select name="Total Occupants" id="occupantCount" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-slate-800 bg-white">
+                            <option value="">Select Occupants</option>
+                            <option value="1 Person">1 Person (Single)</option>
+                            <option value="2 Persons">2 Persons</option>
+                            <option value="3 Persons">3 Persons</option>
+                            <option value="4 Persons">4 Persons</option>
+                            <option value="5+ Persons">5+ Persons</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Intended Duration of Stay <span class="text-red-500">*</span></label>
+                        <select name="Duration of Stay" id="stayDuration" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-slate-800 bg-white">
+                            <option value="">Select Lease Term</option>
+                            <option value="6 Months">6 Months (Short Term)</option>
+                            <option value="1 Year">1 Year</option>
+                            <option value="2 Years">2 Years</option>
+                            <option value="3+ Years">3+ Years (Long Term)</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Reason for Leaving Previous Residence <span class="text-red-500">*</span></label>
+                        <textarea name="Reason for Moving" id="reasonMoving" rows="3" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-slate-800 bg-white resize-none" placeholder="Job relocation, seeking larger space, lease expiration..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: Financial & Background Check -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+                <div class="bg-slate-100/80 px-6 py-4 border-b border-slate-200 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-sm shadow-xs">3</span>
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-wallet text-amber-600"></i> Financial & Background Check
+                    </h3>
+                </div>
+                <div class="p-6 space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Do you have a vehicle? <span class="text-red-500">*</span></label>
+                            <div class="flex gap-4 mb-2">
+                                <label class="flex items-center gap-2 cursor-pointer font-medium text-slate-700">
+                                    <input type="radio" name="Has Vehicle" value="Yes" onchange="toggleVehicleDetails(true)" required class="accent-amber-600"> Yes
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer font-medium text-slate-700">
+                                    <input type="radio" name="Has Vehicle" value="No" onchange="toggleVehicleDetails(false)" class="accent-amber-600"> No
+                                </label>
+                            </div>
+                            <input type="text" name="Vehicle Details" id="vehicleDetails" class="hidden w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-amber-500 outline-none bg-white" placeholder="Vehicle Make/Model/License Plate (Optional)">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Do you have pets? <span class="text-red-500">*</span></label>
+                            <div class="flex gap-4 mb-2">
+                                <label class="flex items-center gap-2 cursor-pointer font-medium text-slate-700">
+                                    <input type="radio" name="Has Pets" value="Yes" onchange="togglePetDetails(true)" required class="accent-amber-600"> Yes
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer font-medium text-slate-700">
+                                    <input type="radio" name="Has Pets" value="No" onchange="togglePetDetails(false)" class="accent-amber-600"> No
+                                </label>
+                            </div>
+                            <input type="text" name="Pet Details" id="petDetails" class="hidden w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-amber-500 outline-none bg-white" placeholder="Pet details (e.g. 1 Dog, Breed, Weight)">
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Monthly Gross Income ($ USD) <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute left-3.5 top-3 text-slate-500 font-bold">$</span>
+                                <input type="number" name="Monthly Income USD" id="monthlyIncome" min="0" required class="w-full pl-8 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-slate-800 bg-white" placeholder="e.g. 4500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- External Credit Check Affiliate Banner -->
+                    <div class="bg-gradient-to-r from-amber-500/10 via-amber-50/40 to-white border border-amber-300/80 rounded-2xl p-5 space-y-4">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <h4 class="font-bold text-slate-900 flex items-center gap-2 text-base">
+                                    <i class="fa-solid fa-chart-line text-amber-600"></i> Step 1: Perform Your Credit Check
+                                </h4>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    Click the button to complete your official instant credit report before submitting.
+                                </p>
+                            </div>
+                            <a href="https://afflat3b2.com/trk/lnk/8891C253-ACB3-4716-8A39-7318DAC08EBB/?o=32670&c=918277&a=743959&k=5D774E3B48750F88E199847D4D0E67EA&l=38512&s1=TRS_R15" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-amber-400 text-xs font-bold px-4.5 py-3 rounded-xl transition shadow-xs whitespace-nowrap">
+                                <span>Check Credit Score Now</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <hr class="border-amber-200/80">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-1">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1">
+                                    Credit Score <span class="text-xs text-slate-400 font-normal">(Optional)</span>
+                                </label>
+                                <input type="number" name="Credit Score" id="creditScoreInput" min="300" max="850" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-slate-800 font-bold bg-white" placeholder="e.g. 720">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1">
+                                    Upload Credit Report Screenshot <span class="text-xs text-slate-400 font-normal">(Optional)</span>
+                                </label>
+                                <input type="file" name="Credit Check Screenshot" id="creditProof" accept="image/*,video/*,.pdf" class="w-full text-xs text-slate-500 file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-900 file:text-amber-400 hover:file:bg-slate-800 cursor-pointer border border-slate-300 rounded-xl p-1.5 bg-white">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 4: Move-in & Tour Appointment -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+                <div class="bg-slate-100/80 px-6 py-4 border-b border-slate-200 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-sm shadow-xs">4</span>
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-regular fa-calendar-check text-amber-600"></i> Schedule & Move-in Date
+                    </h3>
+                </div>
+                <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Intended Move-in Date <span class="text-red-500">*</span></label>
+                        <input type="date" name="Move-In Date" id="moveInDate" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-slate-800 bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">In-Person Tour Date <span class="text-red-500">*</span></label>
+                        <input type="date" name="Appointment Date" id="appointmentDate" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-slate-800 bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Appointment Time Slot <span class="text-red-500">*</span></label>
+                        <input type="time" name="Appointment Time" id="appointmentTime" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-slate-800 bg-white">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 5: Security Deposit & Application Fee Notice -->
+            <div class="bg-amber-50/70 rounded-3xl shadow-sm border border-amber-200/90 overflow-hidden p-6 relative">
+                <div class="flex items-start gap-4">
+                    <div class="bg-amber-500 text-slate-950 p-3.5 rounded-2xl hidden sm:flex items-center justify-center text-xl shadow-xs">
+                        <i class="fa-solid fa-shield-heart"></i>
+                    </div>
+                    <div class="space-y-3 w-full">
+                        <div class="flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs">5</span>
+                            <h3 class="text-lg font-bold text-slate-900">Application Fee & Rental Policy</h3>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl border border-amber-200/90 shadow-2xs space-y-2 text-sm text-slate-700">
+                            <p class="font-extrabold text-slate-900 text-base flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check text-emerald-600"></i> Application Fee: Only $100 (100% Fully Refundable)
+                            </p>
+                            <p class="leading-relaxed">
+                                Submit your application now to reserve the property exclusively for you. You may cancel your application at any time with a 100% full refund guarantee.
+                            </p>
+                            <p class="leading-relaxed bg-slate-50 p-3.5 rounded-xl border border-slate-200 font-medium text-slate-800 text-xs md:text-sm">
+                                <i class="fa-solid fa-info-circle text-amber-600 mr-1"></i> Upon moving into the property, this $100 fee will be completely refunded to you or credited directly toward your first month's rent.
+                            </p>
+                        </div>
+
+                        <label class="flex items-start gap-3 cursor-pointer pt-2">
+                            <input type="checkbox" name="Terms Accepted" id="termsAccepted" required class="mt-1 w-5 h-5 rounded border-slate-300 text-amber-600 focus:ring-amber-500 accent-amber-600">
+                            <span class="text-xs md:text-sm font-semibold text-slate-800 leading-snug">
+                                I have read, understood, and accept the $100 fully refundable application fee policy and security deposit terms. <span class="text-red-500">*</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 6: Verification & Payment -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+                <div class="bg-slate-100/80 px-6 py-4 border-b border-slate-200 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-sm shadow-xs">6</span>
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-credit-card text-amber-600"></i> Verification & Payment Method
+                    </h3>
+                </div>
+                <div class="p-6 space-y-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Select Preferred Payment Method <span class="text-red-500">*</span></label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <label class="relative flex flex-col items-center justify-center p-4 border-2 rounded-2xl cursor-pointer transition bg-slate-50/50 border-slate-200 hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50">
+                                <input type="radio" name="Payment Method" value="Cash App" required class="sr-only">
+                                <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-xl font-bold mb-2">
+                                    <i class="fa-solid fa-dollar-sign"></i>
+                                </div>
+                                <span class="font-bold text-slate-800 text-sm">Cash App</span>
+                            </label>
+
+                            <label class="relative flex flex-col items-center justify-center p-4 border-2 rounded-2xl cursor-pointer transition bg-slate-50/50 border-slate-200 hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50">
+                                <input type="radio" name="Payment Method" value="Chime Bank" class="sr-only">
+                                <div class="w-10 h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-xl font-bold mb-2">
+                                    <i class="fa-solid fa-building-columns"></i>
+                                </div>
+                                <span class="font-bold text-slate-800 text-sm">Chime Bank</span>
+                            </label>
+
+                            <label class="relative flex flex-col items-center justify-center p-4 border-2 rounded-2xl cursor-pointer transition bg-slate-50/50 border-slate-200 hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50">
+                                <input type="radio" name="Payment Method" value="Apple Pay" class="sr-only">
+                                <div class="w-10 h-10 bg-slate-200 text-slate-800 rounded-full flex items-center justify-center text-xl font-bold mb-2">
+                                    <i class="fa-brands fa-apple"></i>
+                                </div>
+                                <span class="font-bold text-slate-800 text-sm">Apple Pay</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50/80 border-l-4 border-blue-600 p-4 rounded-r-2xl">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-info text-blue-600 text-lg mt-0.5"></i>
+                            <div class="text-xs md:text-sm text-slate-700 leading-relaxed">
+                                <p class="font-bold text-slate-900 mb-1">Payment Instructions:</p>
+                                Please reach out directly to the representative or landlord who referred you to this portal. Request their official payment tag / cashtag / handle, complete the $100 Application Fee, and upload your receipt details below.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">
+                                Transaction ID / Ref No <span class="text-xs text-slate-400 font-normal">(Optional)</span>
+                            </label>
+                            <input type="text" name="Transaction ID" id="transactionId" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition font-mono uppercase text-slate-800 bg-white" placeholder="e.g. TXN98765432">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">
+                                Upload Payment Screenshot <span class="text-xs text-slate-400 font-normal">(Optional)</span>
+                            </label>
+                            <input type="file" name="Payment Screenshot" id="paymentProof" accept="image/*,video/*,.pdf" class="w-full text-xs text-slate-500 file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-900 file:text-amber-400 hover:file:bg-slate-800 cursor-pointer border border-slate-300 rounded-xl p-1.5 bg-white">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 7: Applicant Digital Signature -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+                <div class="bg-slate-100/80 px-6 py-4 border-b border-slate-200 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-sm shadow-xs">7</span>
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-signature text-amber-600"></i> Applicant Signature
+                    </h3>
+                </div>
+                <div class="p-6 space-y-4">
+                    <p class="text-sm text-slate-600">Please sign inside the box below to certify that all information provided is true and accurate.</p>
+                    <div class="border-2 border-dashed border-slate-300 rounded-2xl bg-slate-50 p-2 relative">
+                        <canvas id="signatureCanvas" class="signature-canvas w-full h-40 bg-white rounded-xl shadow-inner"></canvas>
+                        <button type="button" onclick="clearSignature()" class="absolute bottom-4 right-4 px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold rounded-lg transition">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center pt-4 no-print">
+                <button type="submit" id="submitBtn" class="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3 mx-auto">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Submit Application Now</span>
+                </button>
+            </div>
+        </form>
+
+        <!-- SUCCESS SCREEN / ACTION OPTIONS (Initially Hidden) -->
+        <div id="successCard" class="hidden bg-white rounded-3xl shadow-xl border border-slate-200 p-8 md:p-12 text-center space-y-6">
+            <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-sm">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            
+            <div class="space-y-2">
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Application Submitted Successfully!</h2>
+                <p class="text-slate-600 text-base max-w-lg mx-auto">
+                    Your rental application and uploaded documents have been securely processed. Our leasing team will review your application within 6 hours.
+                </p>
+            </div>
+
+            <!-- 3 USER OPTIONS BUTTONS -->
+            <div class="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="downloadPDF()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-2xl transition shadow-md">
+                    <i class="fa-solid fa-file-pdf text-lg"></i>
+                    <span>Download PDF File</span>
+                </button>
+
+                <button onclick="window.print()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl transition shadow-md">
+                    <i class="fa-solid fa-print text-lg"></i>
+                    <span>Print Application</span>
+                </button>
+
+                <button onclick="returnHome()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-2xl transition">
+                    <i class="fa-solid fa-house text-lg"></i>
+                    <span>Return to Home</span>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs no-print">
+        <div class="max-w-4xl mx-auto px-4 space-y-2">
+            <p class="font-semibold text-slate-300">&copy; 2026 Premium Rental Portal. All Rights Reserved.</p>
+            <p>Encrypted 256-Bit SSL Secured Portal. Fully compliant with Fair Housing Regulations.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyXmRlvq9RPkcYp_mulgLyubOIr3y1kVk97eMQN8c3oFAgy7CdQCWX5Hpoz_LA-0-ie/exec';
+
+        // Signature Canvas Logic
+        const canvas = document.getElementById('signatureCanvas');
+        const ctx = canvas.getContext('2d');
+        let painting = false;
+
+        function resizeCanvas() {
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function startPosition(e) {
+            painting = true;
+            draw(e);
+        }
+        function finishedPosition() {
+            painting = false;
+            ctx.beginPath();
+        }
+        function draw(e) {
+            if (!painting) return;
+            ctx.lineWidth = 2.5;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#0f172a';
+
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX || e.touches[0].clientX) - rect.left;
+            const y = (e.clientY || e.touches[0].clientY) - rect.top;
+
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        canvas.addEventListener('mousedown', startPosition);
+        canvas.addEventListener('mouseup', finishedPosition);
+        canvas.addEventListener('mousemove', draw);
+
+        canvas.addEventListener('touchstart', startPosition);
+        canvas.addEventListener('touchend', finishedPosition);
+        canvas.addEventListener('touchmove', draw);
+
+        function clearSignature() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function toggleVehicleDetails(show) {
+            const input = document.getElementById('vehicleDetails');
+            if (show) input.classList.remove('hidden');
+            else input.classList.add('hidden');
+        }
+
+        function togglePetDetails(show) {
+            const input = document.getElementById('petDetails');
+            if (show) input.classList.remove('hidden');
+            else input.classList.add('hidden');
+        }
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                if (!file) {
+                    resolve(null);
+                    return;
+                }
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                    const base64String = reader.result.split(',')[1];
+                    resolve({
+                        fileName: file.name,
+                        mimeType: file.type,
+                        base64: base64String
+                    });
+                };
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtnText = submitBtn.innerHTML;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Processing & Uploading...`;
+
+            try {
+                const form = document.getElementById('rentalForm');
+                const formData = new FormData(form);
+                const payload = {};
+
+                for (let [key, value] of formData.entries()) {
+                    if (key !== 'Credit Check Screenshot' && key !== 'Payment Screenshot') {
+                        payload[key] = value;
+                    }
+                }
+
+                const creditFile = document.getElementById('creditProof').files[0];
+                const paymentFile = document.getElementById('paymentProof').files[0];
+
+                payload.creditScreenshot = await fileToBase64(creditFile);
+                payload.paymentScreenshot = await fileToBase64(paymentFile);
+                
+                // Add Signature Data URL
+                payload.signature = canvas.toDataURL('image/png');
+
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                document.getElementById('introCard').classList.add('hidden');
+                document.getElementById('rentalForm').classList.add('hidden');
+                document.getElementById('successCard').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            } catch (err) {
+                console.error("Submission Error:", err);
+                alert("Something went wrong while submitting. Please try again.");
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        }
+
+        function downloadPDF() {
+            window.print();
+        }
+
+        function returnHome() {
+            document.getElementById('rentalForm').reset();
+            clearSignature();
+            document.getElementById('successCard').classList.add('hidden');
+            document.getElementById('introCard').classList.remove('hidden');
+            document.getElementById('rentalForm').classList.remove('hidden');
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> <span>Submit Application Now</span>`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
