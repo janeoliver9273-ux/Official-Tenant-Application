@@ -95,7 +95,7 @@
     <!-- Main Container -->
     <main class="max-w-4xl mx-auto px-4 py-6 md:py-8 w-full flex-grow print-padding">
 
-        <!-- Form Intro Header Card (Advanced & Premium Look) -->
+        <!-- Form Intro Header Card -->
         <div id="introCard" class="bg-white rounded-3xl shadow-sm border border-slate-200/90 p-6 md:p-8 mb-6 text-center md:text-left no-print">
             <div class="space-y-2">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs font-bold text-emerald-700 shadow-2xs">
@@ -300,7 +300,7 @@
                         <h3 class="text-base md:text-lg font-bold text-slate-900">Application Fee Policy</h3>
                     </div>
                     <div class="bg-white p-4 rounded-2xl border border-amber-200 text-xs md:text-sm text-slate-700 space-y-1.5 shadow-2xs">
-                        <p class="font-bold text-slate-900">Fee: Application Fee $100 (100% Fully Refundable)</p>
+                        <p class="font-bold text-slate-900">Fee: $100 (100% Fully Refundable)</p>
                         <p>Fully refundable at any time before move-in, or credited directly towards your first month's rent.</p>
                     </div>
                     <label class="flex items-start gap-2.5 cursor-pointer pt-1">
@@ -386,7 +386,7 @@
             <div class="pt-3 no-print">
                 <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold text-base py-4 rounded-2xl shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-paper-plane"></i>
-                    <span>Submit Application</span>
+                    <span id="submitBtnText">Submit Application</span>
                 </button>
             </div>
 
@@ -400,6 +400,8 @@
 
     <!-- Script Section -->
     <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyXmRlvq9RPkcYp_mulgLyubOIr3y1kVk97eMQN8c3oFAgy7CdQCWX5Hpoz_LA-0-ie/exec";
+
         function toggleVehicleDetails(show) {
             const field = document.getElementById('vehicleDetails');
             if (show) { field.classList.remove('hidden'); } else { field.classList.add('hidden'); field.value = ''; }
@@ -489,14 +491,94 @@
         canvas.addEventListener('touchmove', draw, { passive: false });
         canvas.addEventListener('touchend', stopDrawing);
 
-        function handleFormSubmit(e) {
+        // Helper function to convert file to Base64 for Google Apps Script submission
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve({
+                    data: reader.result.split(',')[1],
+                    type: file.type,
+                    name: file.name
+                });
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+
             if (!hasSigned || !signatureDataInput.value) {
-                e.preventDefault();
-                alert('Please provide your digital signature before submitting the form.');
+                alert('অনুগ্রহ করে ফর্ম সাবমিট করার আগে আপনার ডিজিটাল স্বাক্ষর দিন।');
                 canvas.scrollIntoView({ behavior: 'smooth' });
                 return false;
             }
-            return true;
+
+            const submitBtn = document.getElementById('submitBtn');
+            const submitBtnText = document.getElementById('submitBtnText');
+            submitBtn.disabled = true;
+            submitBtnText.textContent = "Submitting to Google Sheet...";
+
+            try {
+                // Collect text fields
+                const formData = {
+                    "First Name": document.getElementById('firstName').value,
+                    "Last Name": document.getElementById('lastName').value,
+                    "Current Address": document.getElementById('currentAddress').value,
+                    "Email": document.getElementById('email').value,
+                    "Phone Number": document.getElementById('phone').value,
+                    "Gender": document.querySelector('input[name="Gender"]:checked')?.value || "",
+                    "Total Occupants": document.getElementById('occupantCount').value,
+                    "Duration of Stay": document.getElementById('stayDuration').value,
+                    "Reason for Moving": document.getElementById('reasonMoving').value,
+                    "Has Vehicle": document.querySelector('input[name="Has Vehicle"]:checked')?.value || "",
+                    "Vehicle Details": document.getElementById('vehicleDetails').value,
+                    "Has Pets": document.querySelector('input[name="Has Pets"]:checked')?.value || "",
+                    "Pet Details": document.getElementById('petDetails').value,
+                    "Monthly Income USD": document.getElementById('monthlyIncome').value,
+                    "Credit Score": document.getElementById('creditScoreInput').value,
+                    "Move-In Date": document.getElementById('moveInDate').value,
+                    "Appointment Date": document.getElementById('appointmentDate').value,
+                    "Appointment Time": document.getElementById('appointmentTime').value,
+                    "Payment Method": document.querySelector('input[name="Payment Method"]:checked')?.value || "",
+                    "Transaction ID": document.getElementById('transactionId').value,
+                    "Applicant Signature Data": signatureDataInput.value
+                };
+
+                // Process File Uploads (Credit Proof & Payment Proof)
+                const creditFile = document.getElementById('creditProof').files[0];
+                if (creditFile) {
+                    formData["Credit Check Screenshot File"] = await fileToBase64(creditFile);
+                }
+
+                const paymentFile = document.getElementById('paymentProof').files[0];
+                if (paymentFile) {
+                    formData["Payment Screenshot File"] = await fileToBase64(paymentFile);
+                }
+
+                // Send POST request to Google Apps Script
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Required for Google Apps Script Web Apps
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                alert('Application submitted successfully! Your data and files have been sent to Google Sheets.');
+                document.getElementById('rentalForm').reset();
+                clearSignature();
+                toggleVehicleDetails(false);
+                togglePetDetails(false);
+
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('An error occurred while submitting. Please try again.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtnText.textContent = "Submit Application";
+            }
         }
     </script>
 </body>
