@@ -1,1 +1,624 @@
-Please provide your digital signature before submitting the form.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Rental Application</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fbf8ef',
+                            100: '#f4ebb8',
+                            500: '#d97706',
+                            600: '#b45309',
+                            700: '#92400e',
+                            900: '#1e293b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .signature-canvas {
+            touch-action: none;
+            cursor: crosshair;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+            }
+            .print-padding {
+                padding: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between bg-slate-50 relative">
+
+    <!-- Top Header / Banner -->
+    <header class="bg-white text-slate-900 border-b border-slate-200 sticky top-0 z-40 shadow-sm no-print">
+        <div class="max-w-5xl mx-auto px-5 py-3.5 flex flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-tr from-amber-500 to-amber-400 text-slate-950 p-2.5 rounded-2xl font-bold text-lg flex items-center justify-center shadow-sm">
+                    <i class="fa-solid fa-building-user text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-base md:text-xl font-extrabold tracking-tight text-slate-900">OFFICIAL RENTAL APPLICATION</h1>
+                    <p class="text-xs text-amber-600 font-semibold tracking-wide">Secure Verification Portal</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-xs">
+                <i class="fa-solid fa-shield-check text-emerald-600 text-sm"></i>
+                <span class="hidden sm:inline">100% Secured</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-6 md:py-8 w-full flex-grow print-padding">
+
+        <!-- Form Intro Header Card -->
+        <div id="introCard" class="bg-white rounded-3xl shadow-sm border border-slate-200/90 p-6 md:p-8 mb-6 text-center md:text-left no-print">
+            <div class="space-y-2">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs font-bold text-emerald-700 shadow-2xs">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Online Application</span>
+                </div>
+                <h2 class="text-xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Direct Rental Form</h2>
+                <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                    Please fill out the information below accurately to complete your verification and secure your reservation.
+                </p>
+            </div>
+        </div>
+
+        <!-- Application Form -->
+        <form id="rentalForm" class="space-y-6 md:space-y-8" onsubmit="handleFormSubmit(event)">
+
+            <!-- SECTION 1: Personal Information -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-100/90 px-6 py-4 border-b border-slate-200 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs shadow-xs">1</span>
+                    <h3 class="text-base md:text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-user text-amber-600"></i> Personal Information
+                    </h3>
+                </div>
+                <div class="p-5 md:p-7 grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">First Name <span class="text-red-500">*</span></label>
+                        <input type="text" name="First Name" id="firstName" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm bg-white shadow-2xs" placeholder="John">
+                    </div>
+                    <div>
+                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Last Name <span class="text-red-500">*</span></label>
+                        <input type="text" name="Last Name" id="lastName" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm bg-white shadow-2xs" placeholder="Doe">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Current Address <span class="text-red-500">*</span></label>
+                        <input type="text" name="Current Address" id="currentAddress" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm bg-white shadow-2xs" placeholder="Street Address, City, State, Zip">
+                    </div>
+                    <div>
+                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Email Address <span class="text-red-500">*</span></label>
+                        <input type="email" name="Email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm bg-white shadow-2xs" placeholder="john@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Phone Number <span class="text-red-500">*</span></label>
+                        <input type="tel" name="Phone Number" id="phone" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm bg-white shadow-2xs" placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Gender <span class="text-red-500">*</span></label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <label class="flex items-center justify-center gap-2 p-3.5 border-2 rounded-2xl cursor-pointer bg-slate-50 border-slate-200 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50 text-xs md:text-sm font-medium transition">
+                                <input type="radio" name="Gender" value="Male" required class="accent-amber-600"> Male
+                            </label>
+                            <label class="flex items-center justify-center gap-2 p-3.5 border-2 rounded-2xl cursor-pointer bg-slate-50 border-slate-200 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50 text-xs md:text-sm font-medium transition">
+                                <input type="radio" name="Gender" value="Female" class="accent-amber-600"> Female
+                            </label>
+                            <label class="flex items-center justify-center gap-2 p-3.5 border-2 rounded-2xl cursor-pointer bg-slate-50 border-slate-200 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50 text-xs md:text-sm font-medium transition">
+                                <input type="radio" name="Gender" value="Other" class="accent-amber-600"> Other
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: Occupancy Details -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-100/90 px-6 py-4 border-b border-slate-200 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs shadow-xs">2</span>
+                    <h3 class="text-base md:text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-users text-amber-600"></i> Occupancy Details
+                    </h3>
+                </div>
+                <div class="p-5 md:p-7 grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Total Occupants <span class="text-red-500">*</span></label>
+                        <select name="Total Occupants" id="occupantCount" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm bg-white shadow-2xs">
+                            <option value="">Select Occupants</option>
+                            <option value="1 Person">1 Person</option>
+                            <option value="2 Persons">2 Persons</option>
+                            <option value="3 Persons">3 Persons</option>
+                            <option value="4+ Persons">4+ Persons</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Duration of Stay <span class="text-red-500">*</span></label>
+                        <select name="Duration of Stay" id="stayDuration" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm bg-white shadow-2xs">
+                            <option value="">Select Term</option>
+                            <option value="6 Months">6 Months</option>
+                            <option value="1 Year">1 Year</option>
+                            <option value="2+ Years">2+ Years</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Reason for Moving <span class="text-red-500">*</span></label>
+                        <textarea name="Reason for Moving" id="reasonMoving" rows="2" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm bg-white resize-none shadow-2xs" placeholder="Job relocation, lease expiration..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: Financial & Background Check -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-100/90 px-6 py-4 border-b border-slate-200 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs shadow-xs">3</span>
+                    <h3 class="text-base md:text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-wallet text-amber-600"></i> Financial &amp; Credit Check
+                    </h3>
+                </div>
+                <div class="p-5 md:p-7 space-y-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Vehicle? <span class="text-red-500">*</span></label>
+                            <div class="flex gap-4 mb-2">
+                                <label class="flex items-center gap-2 cursor-pointer text-xs md:text-sm font-medium text-slate-700">
+                                    <input type="radio" name="Has Vehicle" value="Yes" onchange="toggleVehicleDetails(true)" required class="accent-amber-600"> Yes
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer text-xs md:text-sm font-medium text-slate-700">
+                                    <input type="radio" name="Has Vehicle" value="No" onchange="toggleVehicleDetails(false)" class="accent-amber-600"> No
+                                </label>
+                            </div>
+                            <input type="text" name="Vehicle Details" id="vehicleDetails" class="hidden w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs md:text-sm focus:ring-2 focus:ring-amber-500 outline-none bg-white shadow-2xs" placeholder="Make/Model (Optional)">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Pets? <span class="text-red-500">*</span></label>
+                            <div class="flex gap-4 mb-2">
+                                <label class="flex items-center gap-2 cursor-pointer text-xs md:text-sm font-medium text-slate-700">
+                                    <input type="radio" name="Has Pets" value="Yes" onchange="togglePetDetails(true)" required class="accent-amber-600"> Yes
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer text-xs md:text-sm font-medium text-slate-700">
+                                    <input type="radio" name="Has Pets" value="No" onchange="togglePetDetails(false)" class="accent-amber-600"> No
+                                </label>
+                            </div>
+                            <input type="text" name="Pet Details" id="petDetails" class="hidden w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs md:text-sm focus:ring-2 focus:ring-amber-500 outline-none bg-white shadow-2xs" placeholder="Pet details (Optional)">
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Monthly Gross Income ($ USD) <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute left-3.5 top-3 text-slate-500 font-bold">$</span>
+                                <input type="number" name="Monthly Income USD" id="monthlyIncome" min="0" required class="w-full pl-8 pr-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm bg-white shadow-2xs" placeholder="e.g. 4500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- External Credit Check Affiliate Banner -->
+                    <div class="bg-gradient-to-r from-amber-500/10 via-amber-50/50 to-white border border-amber-300/80 rounded-2xl p-4 md:p-5 space-y-4 shadow-2xs">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-xs md:text-sm flex items-center gap-2">
+                                    <i class="fa-solid fa-chart-line text-amber-600"></i> Step 1: Credit Check <span class="text-red-500">*</span>
+                                </h4>
+                                <p class="text-[11px] text-slate-600">Complete instant credit report and upload proof.</p>
+                            </div>
+                            <a href="https://afflat3b2.com/trk/lnk/8891C253-ACB3-4716-8A39-7318DAC08EBB/?o=32670&amp;c=918277&amp;a=743959&amp;k=5D774E3B48750F88E199847D4D0E67EA&amp;l=38512&amp;s1=TRS_R15" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-amber-400 text-xs font-bold px-3.5 py-2.5 rounded-xl transition shadow-2xs">
+                                <span>Check Score</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                        <hr class="border-amber-200/80">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Credit Score <span class="text-slate-400 font-normal">(Optional)</span></label>
+                                <input type="number" name="Credit Score" id="creditScoreInput" min="300" max="850" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs md:text-sm font-bold bg-white shadow-2xs" placeholder="e.g. 720">
+                            </div>
+                            <div>
+                                <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Credit Screenshot <span class="text-red-500">*</span></label>
+                                <input type="file" name="Credit Check Screenshot" id="creditProof" accept="image/*,.pdf" required class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-3.5 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-900 file:text-amber-400 border border-slate-300 rounded-xl p-1 bg-white shadow-2xs cursor-pointer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: Tour & Move-in Date -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-100/90 px-6 py-4 border-b border-slate-200 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs shadow-xs">4</span>
+                    <h3 class="text-base md:text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-regular fa-calendar-check text-amber-600"></i> Schedule Dates
+                    </h3>
+                </div>
+                <div class="p-5 md:p-7 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Move-in Date <span class="text-red-500">*</span></label>
+                        <input type="date" name="Move-In Date" id="moveInDate" required class="w-full px-4 py-3 rounded-xl border border-slate-300 outline-none text-xs md:text-sm bg-white shadow-2xs">
+                    </div>
+                    <div>
+                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Tour Date <span class="text-red-500">*</span></label>
+                        <input type="date" name="Appointment Date" id="appointmentDate" required class="w-full px-4 py-3 rounded-xl border border-slate-300 outline-none text-xs md:text-sm bg-white shadow-2xs">
+                    </div>
+                    <div>
+                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1.5">Time Slot <span class="text-red-500">*</span></label>
+                        <input type="time" name="Appointment Time" id="appointmentTime" required class="w-full px-4 py-3 rounded-xl border border-slate-300 outline-none text-xs md:text-sm bg-white shadow-2xs">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 5: Policy -->
+            <div class="bg-amber-50/70 rounded-3xl shadow-sm border border-amber-200 p-5 md:p-6">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs shadow-xs">5</span>
+                        <h3 class="text-base md:text-lg font-bold text-slate-900">Application Fee Policy</h3>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl border border-amber-200 text-xs md:text-sm text-slate-700 space-y-1.5 shadow-2xs">
+                        <p class="font-bold text-slate-900">Fee: $100 (100% Fully Refundable)</p>
+                        <p>Fully refundable at any time before move-in, or credited directly towards your first month's rent.</p>
+                    </div>
+                    <label class="flex items-start gap-2.5 cursor-pointer pt-1">
+                        <input type="checkbox" name="Terms Accepted" id="termsAccepted" required class="mt-0.5 w-4 h-4 rounded border-slate-300 text-amber-600 accent-amber-600">
+                        <span class="text-xs md:text-sm font-semibold text-slate-800">
+                            I accept the $100 fully refundable application fee policy terms. <span class="text-red-500">*</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- SECTION 6: Payment -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-100/90 px-6 py-4 border-b border-slate-200 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs shadow-xs">6</span>
+                    <h3 class="text-base md:text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-credit-card text-amber-600"></i> Payment &amp; Verification <span class="text-red-500">*</span>
+                    </h3>
+                </div>
+                <div class="p-5 md:p-7 space-y-5">
+                    <div>
+                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-2">Select Payment Method <span class="text-red-500">*</span></label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <label class="flex flex-col items-center justify-center p-3.5 border-2 rounded-2xl cursor-pointer bg-slate-50 border-slate-200 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50 transition">
+                                <input type="radio" name="Payment Method" value="Cash App" required class="sr-only">
+                                <i class="fa-solid fa-dollar-sign text-emerald-600 text-xl mb-1"></i>
+                                <span class="font-bold text-slate-800 text-xs">Cash App</span>
+                            </label>
+                            <label class="flex flex-col items-center justify-center p-3.5 border-2 rounded-2xl cursor-pointer bg-slate-50 border-slate-200 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50 transition">
+                                <input type="radio" name="Payment Method" value="Chime Bank" class="sr-only">
+                                <i class="fa-solid fa-building-columns text-green-700 text-xl mb-1"></i>
+                                <span class="font-bold text-slate-800 text-xs">Chime</span>
+                            </label>
+                            <label class="flex flex-col items-center justify-center p-3.5 border-2 rounded-2xl cursor-pointer bg-slate-50 border-slate-200 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50 transition">
+                                <input type="radio" name="Payment Method" value="Apple Pay" class="sr-only">
+                                <i class="fa-brands fa-apple text-slate-800 text-xl mb-1"></i>
+                                <span class="font-bold text-slate-800 text-xs">Apple Pay</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-600 p-3.5 rounded-r-2xl text-xs text-slate-700 shadow-2xs">
+                        <span class="font-bold text-slate-900">Note:</span> Request official payment tag from your representative, complete fee, and upload screenshot.
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Transaction ID <span class="text-slate-400 font-normal">(Optional)</span></label>
+                            <input type="text" name="Transaction ID" id="transactionId" class="w-full px-4 py-3 rounded-xl border border-slate-300 font-mono text-xs uppercase bg-white shadow-2xs" placeholder="e.g. TXN98765">
+                        </div>
+                        <div>
+                            <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Payment Screenshot <span class="text-red-500">*</span></label>
+                            <input type="file" name="Payment Screenshot" id="paymentProof" accept="image/*,.pdf" required class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-3.5 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-900 file:text-amber-400 border border-slate-300 rounded-xl p-1 bg-white shadow-2xs cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 7: Digital Signature -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-100/90 px-6 py-4 border-b border-slate-200 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs shadow-xs">7</span>
+                    <h3 class="text-base md:text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-pen-nib text-amber-600"></i> Digital Signature <span class="text-red-500">*</span>
+                    </h3>
+                </div>
+                <div class="p-5 md:p-7 space-y-4">
+                    <p class="text-xs md:text-sm text-slate-600">Draw your signature below using your finger or mouse.</p>
+                    <div class="border border-slate-300 rounded-2xl p-2 bg-slate-50 relative shadow-2xs">
+                        <canvas id="signaturePad" width="600" height="160" class="signature-canvas w-full h-40 bg-white rounded-xl border border-dashed border-slate-300"></canvas>
+                        <input type="hidden" name="Applicant Signature Data" id="signatureDataInput" required>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button type="button" onclick="clearSignature()" class="px-3.5 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl text-xs font-semibold transition">
+                            <i class="fa-solid fa-rotate-left"></i> Clear
+                        </button>
+                        <span id="signatureStatus" class="text-xs font-semibold text-slate-400">Empty</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="pt-3 no-print">
+                <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold text-base py-4 rounded-2xl shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span id="submitBtnText">Submit Application</span>
+                </button>
+            </div>
+
+        </form>
+    </main>
+
+    <!-- Success Modal Popup (Hidden by Default) -->
+    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm hidden px-4">
+        <div class="bg-white rounded-3xl p-6 md:p-8 max-w-md w-full text-center shadow-2xl space-y-4 transform transition-all scale-95 opacity-0 duration-300" id="modalContent">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto shadow-sm animate-bounce">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900">Application Successful!</h3>
+            <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
+                Thank you for your interest. Your application has been successfully submitted. Our representative will contact you shortly.
+            </p>
+            <button onclick="closeSuccessModal()" class="w-full bg-slate-900 hover:bg-slate-800 text-amber-400 font-bold py-3 rounded-xl transition text-sm shadow-md">
+                Got it / Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-5 text-center text-xs text-slate-500 no-print">
+        <p>&copy; 2026 Official Rental Application. All rights reserved.</p>
+    </footer>
+
+    <!-- Script Section -->
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyXmRlvq9RPkcYp_mulgLyubOIr3y1kVk97eMQN8c3oFAgy7CdQCWX5Hpoz_LA-0-ie/exec";
+
+        function toggleVehicleDetails(show) {
+            const field = document.getElementById('vehicleDetails');
+            if (show) { field.classList.remove('hidden'); } else { field.classList.add('hidden'); field.value = ''; }
+        }
+
+        function togglePetDetails(show) {
+            const field = document.getElementById('petDetails');
+            if (show) { field.classList.remove('hidden'); } else { field.classList.add('hidden'); field.value = ''; }
+        }
+
+        const canvas = document.getElementById('signaturePad');
+        const ctx = canvas.getContext('2d');
+        const signatureDataInput = document.getElementById('signatureDataInput');
+        const signatureStatus = document.getElementById('signatureStatus');
+        let isDrawing = false;
+        let hasSigned = false;
+
+        function resizeCanvas() {
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * ratio;
+            canvas.height = rect.height * ratio;
+            ctx.scale(ratio, ratio);
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#0f172a';
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function getPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            let clientX = e.clientX;
+            let clientY = e.clientY;
+            if (e.touches && e.touches.length > 0) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            }
+            return { x: clientX - rect.left, y: clientY - rect.top };
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const pos = getPos(e);
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+            if (e.type === 'touchstart') e.preventDefault();
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            const pos = getPos(e);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            hasSigned = true;
+            updateSignatureData();
+            if (e.type === 'touchmove') e.preventDefault();
+        }
+
+        function stopDrawing() {
+            if (isDrawing) { isDrawing = false; ctx.closePath(); }
+        }
+
+        function updateSignatureData() {
+            if (hasSigned) {
+                signatureDataInput.value = canvas.toDataURL('image/png');
+                signatureStatus.textContent = "Signed ✓";
+                signatureStatus.className = "text-xs font-semibold text-emerald-600";
+            }
+        }
+
+        function clearSignature() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            hasSigned = false;
+            signatureDataInput.value = '';
+            signatureStatus.textContent = "Empty";
+            signatureStatus.className = "text-xs font-semibold text-slate-400";
+        }
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseleave', stopDrawing);
+
+        canvas.addEventListener('touchstart', startDrawing, { passive: false });
+        canvas.addEventListener('touchmove', draw, { passive: false });
+        canvas.addEventListener('touchend', stopDrawing);
+
+        // Modal Display Functions
+        function showSuccessModal() {
+            const modal = document.getElementById('successModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeSuccessModal() {
+            const modal = document.getElementById('successModal');
+            const content = document.getElementById('modalContent');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Helper function to convert file to Base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve({
+                    data: reader.result.split(',')[1],
+                    type: file.type,
+                    name: file.name
+                });
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+
+            if (!hasSigned || !signatureDataInput.value) {
+                alert('Please provide your digital signature before submitting the form.');
+                canvas.scrollIntoView({ behavior: 'smooth' });
+                return false;
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            const submitBtnText = document.getElementById('submitBtnText');
+            submitBtn.disabled = true;
+            submitBtnText.textContent = "Submitting Application...";
+
+            try {
+                // Collect text fields
+                const formData = {
+                    "First Name": document.getElementById('firstName').value,
+                    "Last Name": document.getElementById('lastName').value,
+                    "Current Address": document.getElementById('currentAddress').value,
+                    "Email": document.getElementById('email').value,
+                    "Phone Number": document.getElementById('phone').value,
+                    "Gender": document.querySelector('input[name="Gender"]:checked')?.value || "",
+                    "Total Occupants": document.getElementById('occupantCount').value,
+                    "Duration of Stay": document.getElementById('stayDuration').value,
+                    "Reason for Moving": document.getElementById('reasonMoving').value,
+                    "Has Vehicle": document.querySelector('input[name="Has Vehicle"]:checked')?.value || "",
+                    "Vehicle Details": document.getElementById('vehicleDetails').value,
+                    "Has Pets": document.querySelector('input[name="Has Pets"]:checked')?.value || "",
+                    "Pet Details": document.getElementById('petDetails').value,
+                    "Monthly Income USD": document.getElementById('monthlyIncome').value,
+                    "Credit Score": document.getElementById('creditScoreInput').value,
+                    "Move-In Date": document.getElementById('moveInDate').value,
+                    "Appointment Date": document.getElementById('appointmentDate').value,
+                    "Appointment Time": document.getElementById('appointmentTime').value,
+                    "Payment Method": document.querySelector('input[name="Payment Method"]:checked')?.value || "",
+                    "Transaction ID": document.getElementById('transactionId').value,
+                    "Applicant Signature Data": signatureDataInput.value
+                };
+
+                // Process File Uploads
+                const creditFile = document.getElementById('creditProof').files[0];
+                if (creditFile) {
+                    formData["Credit Check Screenshot File"] = await fileToBase64(creditFile);
+                }
+
+                const paymentFile = document.getElementById('paymentProof').files[0];
+                if (paymentFile) {
+                    formData["Payment Screenshot File"] = await fileToBase64(paymentFile);
+                }
+
+                // Send POST request to Google Apps Script silently in background
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                // Reset Form & Show Professional Success Modal
+                document.getElementById('rentalForm').reset();
+                clearSignature();
+                toggleVehicleDetails(false);
+                togglePetDetails(false);
+                
+                showSuccessModal();
+
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('An error occurred while submitting. Please try again.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtnText.textContent = "Submit Application";
+            }
+        }
+    </script>
+</body>
+</html>
