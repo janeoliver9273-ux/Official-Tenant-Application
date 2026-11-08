@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haven Rentals USA - Official Rental Application Portal</title>
+    <title>Haven Rentals USA - Tenant Application</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -74,88 +74,83 @@
 
     <!-- Top Header / Banner -->
     <header class="bg-white text-slate-900 border-b border-slate-200 sticky top-0 z-40 shadow-sm no-print">
-        <div class="max-w-5xl mx-auto px-4 py-3 flex flex-row items-center justify-between gap-2">
-            <div class="flex items-center gap-2.5">
-                <div class="bg-gradient-to-tr from-amber-500 to-amber-400 text-slate-950 p-2 rounded-xl font-bold text-lg flex items-center justify-center shadow-sm">
-                    <i class="fa-solid fa-building-user text-xl"></i>
+        <div class="max-w-5xl mx-auto px-4 py-2.5 flex flex-row items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+                <div class="bg-gradient-to-tr from-amber-500 to-amber-400 text-slate-950 p-2 rounded-xl font-bold text-base flex items-center justify-center shadow-sm">
+                    <i class="fa-solid fa-building-user"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg md:text-2xl font-extrabold tracking-tight text-slate-900">HAVEN RENTALS USA</h1>
-                    <p class="text-[10px] md:text-xs text-amber-600 font-semibold tracking-wide">Verified Real Estate Portal</p>
+                    <h1 class="text-sm md:text-lg font-extrabold tracking-tight text-slate-900">HAVEN RENTALS USA</h1>
+                    <p class="text-[10px] text-amber-600 font-semibold tracking-wide">Rental Portal</p>
                 </div>
             </div>
             
-            <div class="flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full text-xs font-semibold shadow-xs">
-                <i class="fa-solid fa-shield-check text-emerald-600 text-sm"></i>
-                <span class="hidden sm:inline">100% Secure &amp; Protected</span>
-                <span class="sm:hidden">100% Secure</span>
+            <div class="flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-800 px-2.5 py-1 rounded-full text-[11px] md:text-xs font-semibold">
+                <i class="fa-solid fa-shield-check text-emerald-600"></i>
+                <span>Secure</span>
             </div>
         </div>
     </header>
 
     <!-- Main Container -->
-    <main class="max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-8 w-full flex-grow print-padding">
+    <main class="max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-6 w-full flex-grow print-padding">
 
-        <!-- Form Intro Header Card -->
-        <div id="introCard" class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200/80 p-5 md:p-8 mb-6 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-4 no-print">
-            <div class="space-y-1.5 max-w-xl">
-                <div class="inline-flex items-center gap-2 px-3 py-0.5 bg-gradient-to-r from-emerald-50 to-amber-50 border border-amber-200/80 rounded-full text-xs font-bold text-amber-900">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>Official Tenant Application</span>
-                </div>
-                <h2 class="text-xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Residential Lease Application</h2>
-                <p class="text-slate-600 text-xs md:text-base leading-relaxed">
-                    Please fill out the form below accurately to complete your verification and reserve your rental property.
+        <!-- Form Intro Header Card (Compact & Mobile Friendly) -->
+        <div id="introCard" class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200/80 p-4 md:p-6 mb-5 text-center md:text-left no-print">
+            <div class="space-y-1">
+                <span class="inline-block px-2.5 py-0.5 bg-amber-50 border border-amber-200 rounded-full text-[11px] font-bold text-amber-800">
+                    Online Application
+                </span>
+                <h2 class="text-lg md:text-2xl font-extrabold text-slate-900 tracking-tight">Tenant Rental Form</h2>
+                <p class="text-slate-600 text-xs md:text-sm">
+                    Please fill out the information below to secure your rental reservation.
                 </p>
             </div>
         </div>
 
         <!-- Application Form -->
-        <form id="rentalForm" class="space-y-6 md:space-y-8" onsubmit="handleFormSubmit(event)">
+        <form id="rentalForm" class="space-y-6" onsubmit="handleFormSubmit(event)">
 
             <!-- SECTION 1: Personal Information -->
-            <div class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
-                <div class="bg-slate-100/80 px-4 md:px-6 py-3.5 border-b border-slate-200 flex items-center gap-3">
-                    <span class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs md:text-sm shadow-xs">1</span>
-                    <h3 class="text-base md:text-lg font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fa-solid fa-user text-amber-600"></i> Personal Information
+            <div class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-100/80 px-4 md:px-6 py-3 border-b border-slate-200 flex items-center gap-2.5">
+                    <span class="w-6 h-6 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs">1</span>
+                    <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-1.5">
+                        <i class="fa-solid fa-user text-amber-600"></i> Personal Info
                     </h3>
                 </div>
-                <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">First Name <span class="text-red-500">*</span></label>
-                        <input type="text" name="First Name" id="firstName" required class="w-full px-3.5 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-sm text-slate-800 bg-white" placeholder="John">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">First Name <span class="text-red-500">*</span></label>
+                        <input type="text" name="First Name" id="firstName" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-xs md:text-sm bg-white" placeholder="John">
                     </div>
                     <div>
-                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Last Name <span class="text-red-500">*</span></label>
-                        <input type="text" name="Last Name" id="lastName" required class="w-full px-3.5 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-sm text-slate-800 bg-white" placeholder="Doe">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Last Name <span class="text-red-500">*</span></label>
+                        <input type="text" name="Last Name" id="lastName" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-xs md:text-sm bg-white" placeholder="Doe">
                     </div>
                     <div class="md:col-span-2">
-                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Current Address <span class="text-red-500">*</span></label>
-                        <input type="text" name="Current Address" id="currentAddress" required class="w-full px-3.5 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-sm text-slate-800 bg-white" placeholder="Street Address, City, State, Zip Code">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Current Address <span class="text-red-500">*</span></label>
+                        <input type="text" name="Current Address" id="currentAddress" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-xs md:text-sm bg-white" placeholder="Street Address, City, State, Zip">
                     </div>
                     <div>
-                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Email Address <span class="text-red-500">*</span></label>
-                        <input type="email" name="Email" id="email" required class="w-full px-3.5 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-sm text-slate-800 bg-white" placeholder="john.doe@example.com">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Email Address <span class="text-red-500">*</span></label>
+                        <input type="email" name="Email" id="email" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-xs md:text-sm bg-white" placeholder="john@example.com">
                     </div>
                     <div>
-                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Phone Number <span class="text-red-500">*</span></label>
-                        <input type="tel" name="Phone Number" id="phone" required class="w-full px-3.5 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-sm text-slate-800 bg-white" placeholder="+1 (555) 000-0000">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Phone Number <span class="text-red-500">*</span></label>
+                        <input type="tel" name="Phone Number" id="phone" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-xs md:text-sm bg-white" placeholder="+1 (555) 000-0000">
                     </div>
                     <div class="md:col-span-2">
-                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Gender <span class="text-red-500">*</span></label>
-                        <div class="grid grid-cols-3 gap-2 md:gap-3">
-                            <label class="flex items-center justify-center gap-1.5 md:gap-2 p-2.5 md:p-3.5 border rounded-xl md:rounded-2xl cursor-pointer transition bg-slate-50/50 hover:bg-slate-100/70 border-slate-300 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/60 has-[:checked]:text-amber-950 text-xs md:text-sm font-medium">
-                                <input type="radio" name="Gender" value="Male" required class="accent-amber-600">
-                                <i class="fa-solid fa-mars text-blue-600"></i> Male
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Gender <span class="text-red-500">*</span></label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <label class="flex items-center justify-center gap-1.5 p-2.5 border rounded-xl cursor-pointer bg-slate-50 border-slate-300 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 text-xs font-medium">
+                                <input type="radio" name="Gender" value="Male" required class="accent-amber-600"> Male
                             </label>
-                            <label class="flex items-center justify-center gap-1.5 md:gap-2 p-2.5 md:p-3.5 border rounded-xl md:rounded-2xl cursor-pointer transition bg-slate-50/50 hover:bg-slate-100/70 border-slate-300 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/60 has-[:checked]:text-amber-950 text-xs md:text-sm font-medium">
-                                <input type="radio" name="Gender" value="Female" class="accent-amber-600">
-                                <i class="fa-solid fa-venus text-pink-600"></i> Female
+                            <label class="flex items-center justify-center gap-1.5 p-2.5 border rounded-xl cursor-pointer bg-slate-50 border-slate-300 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 text-xs font-medium">
+                                <input type="radio" name="Gender" value="Female" class="accent-amber-600"> Female
                             </label>
-                            <label class="flex items-center justify-center gap-1.5 md:gap-2 p-2.5 md:p-3.5 border rounded-xl md:rounded-2xl cursor-pointer transition bg-slate-50/50 hover:bg-slate-100/70 border-slate-300 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/60 has-[:checked]:text-amber-950 text-xs md:text-sm font-medium">
-                                <input type="radio" name="Gender" value="Other" class="accent-amber-600">
-                                <i class="fa-solid fa-genderless text-purple-600"></i> Other
+                            <label class="flex items-center justify-center gap-1.5 p-2.5 border rounded-xl cursor-pointer bg-slate-50 border-slate-300 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50 text-xs font-medium">
+                                <input type="radio" name="Gender" value="Other" class="accent-amber-600"> Other
                             </label>
                         </div>
                     </div>
@@ -163,280 +158,234 @@
             </div>
 
             <!-- SECTION 2: Occupancy Details -->
-            <div class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
-                <div class="bg-slate-100/80 px-4 md:px-6 py-3.5 border-b border-slate-200 flex items-center gap-3">
-                    <span class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs md:text-sm shadow-xs">2</span>
-                    <h3 class="text-base md:text-lg font-bold text-slate-900 flex items-center gap-2">
+            <div class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-100/80 px-4 md:px-6 py-3 border-b border-slate-200 flex items-center gap-2.5">
+                    <span class="w-6 h-6 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs">2</span>
+                    <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-1.5">
                         <i class="fa-solid fa-users text-amber-600"></i> Occupancy Details
                     </h3>
                 </div>
-                <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Total Occupants <span class="text-red-500">*</span></label>
-                        <select name="Total Occupants" id="occupantCount" required class="w-full px-3.5 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-sm text-slate-800 bg-white">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Total Occupants <span class="text-red-500">*</span></label>
+                        <select name="Total Occupants" id="occupantCount" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-xs md:text-sm bg-white">
                             <option value="">Select Occupants</option>
-                            <option value="1 Person">1 Person (Single)</option>
+                            <option value="1 Person">1 Person</option>
                             <option value="2 Persons">2 Persons</option>
                             <option value="3 Persons">3 Persons</option>
-                            <option value="4 Persons">4 Persons</option>
-                            <option value="5+ Persons">5+ Persons</option>
+                            <option value="4+ Persons">4+ Persons</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Intended Duration of Stay <span class="text-red-500">*</span></label>
-                        <select name="Duration of Stay" id="stayDuration" required class="w-full px-3.5 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-sm text-slate-800 bg-white">
-                            <option value="">Select Lease Term</option>
-                            <option value="6 Months">6 Months (Short Term)</option>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Duration of Stay <span class="text-red-500">*</span></label>
+                        <select name="Duration of Stay" id="stayDuration" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-xs md:text-sm bg-white">
+                            <option value="">Select Term</option>
+                            <option value="6 Months">6 Months</option>
                             <option value="1 Year">1 Year</option>
-                            <option value="2 Years">2 Years</option>
-                            <option value="3+ Years">3+ Years (Long Term)</option>
+                            <option value="2+ Years">2+ Years</option>
                         </select>
                     </div>
                     <div class="md:col-span-2">
-                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Reason for Leaving Previous Residence <span class="text-red-500">*</span></label>
-                        <textarea name="Reason for Moving" id="reasonMoving" rows="3" required class="w-full px-3.5 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-sm text-slate-800 bg-white resize-none" placeholder="Job relocation, seeking larger space, lease expiration..."></textarea>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Reason for Moving <span class="text-red-500">*</span></label>
+                        <textarea name="Reason for Moving" id="reasonMoving" rows="2" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-xs md:text-sm bg-white resize-none" placeholder="Job relocation, lease expiration..."></textarea>
                     </div>
                 </div>
             </div>
 
             <!-- SECTION 3: Financial & Background Check -->
-            <div class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
-                <div class="bg-slate-100/80 px-4 md:px-6 py-3.5 border-b border-slate-200 flex items-center gap-3">
-                    <span class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs md:text-sm shadow-xs">3</span>
-                    <h3 class="text-base md:text-lg font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fa-solid fa-wallet text-amber-600"></i> Financial &amp; Background Check
+            <div class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-100/80 px-4 md:px-6 py-3 border-b border-slate-200 flex items-center gap-2.5">
+                    <span class="w-6 h-6 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs">3</span>
+                    <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-1.5">
+                        <i class="fa-solid fa-wallet text-amber-600"></i> Financial &amp; Credit Check
                     </h3>
                 </div>
-                <div class="p-4 md:p-6 space-y-5 md:space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                <div class="p-4 md:p-6 space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Do you have a vehicle? <span class="text-red-500">*</span></label>
-                            <div class="flex gap-4 mb-2">
-                                <label class="flex items-center gap-2 cursor-pointer text-xs md:text-sm font-medium text-slate-700">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Vehicle? <span class="text-red-500">*</span></label>
+                            <div class="flex gap-4 mb-1.5">
+                                <label class="flex items-center gap-1.5 cursor-pointer text-xs font-medium text-slate-700">
                                     <input type="radio" name="Has Vehicle" value="Yes" onchange="toggleVehicleDetails(true)" required class="accent-amber-600"> Yes
                                 </label>
-                                <label class="flex items-center gap-2 cursor-pointer text-xs md:text-sm font-medium text-slate-700">
+                                <label class="flex items-center gap-1.5 cursor-pointer text-xs font-medium text-slate-700">
                                     <input type="radio" name="Has Vehicle" value="No" onchange="toggleVehicleDetails(false)" class="accent-amber-600"> No
                                 </label>
                             </div>
-                            <input type="text" name="Vehicle Details" id="vehicleDetails" class="hidden w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs md:text-sm focus:ring-2 focus:ring-amber-500 outline-none bg-white" placeholder="Vehicle Make/Model/License Plate (Optional)">
+                            <input type="text" name="Vehicle Details" id="vehicleDetails" class="hidden w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-amber-500 outline-none bg-white" placeholder="Make/Model (Optional)">
                         </div>
 
                         <div>
-                            <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Do you have pets? <span class="text-red-500">*</span></label>
-                            <div class="flex gap-4 mb-2">
-                                <label class="flex items-center gap-2 cursor-pointer text-xs md:text-sm font-medium text-slate-700">
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Pets? <span class="text-red-500">*</span></label>
+                            <div class="flex gap-4 mb-1.5">
+                                <label class="flex items-center gap-1.5 cursor-pointer text-xs font-medium text-slate-700">
                                     <input type="radio" name="Has Pets" value="Yes" onchange="togglePetDetails(true)" required class="accent-amber-600"> Yes
                                 </label>
-                                <label class="flex items-center gap-2 cursor-pointer text-xs md:text-sm font-medium text-slate-700">
+                                <label class="flex items-center gap-1.5 cursor-pointer text-xs font-medium text-slate-700">
                                     <input type="radio" name="Has Pets" value="No" onchange="togglePetDetails(false)" class="accent-amber-600"> No
                                 </label>
                             </div>
-                            <input type="text" name="Pet Details" id="petDetails" class="hidden w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs md:text-sm focus:ring-2 focus:ring-amber-500 outline-none bg-white" placeholder="Pet details (e.g. 1 Dog, Breed, Weight)">
+                            <input type="text" name="Pet Details" id="petDetails" class="hidden w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-amber-500 outline-none bg-white" placeholder="Pet details (Optional)">
                         </div>
 
                         <div class="md:col-span-2">
-                            <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Monthly Gross Income ($ USD) <span class="text-red-500">*</span></label>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Monthly Gross Income ($ USD) <span class="text-red-500">*</span></label>
                             <div class="relative">
-                                <span class="absolute left-3.5 top-2.5 md:top-3 text-slate-500 font-bold">$</span>
-                                <input type="number" name="Monthly Income USD" id="monthlyIncome" min="0" required class="w-full pl-8 pr-4 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-sm text-slate-800 bg-white" placeholder="e.g. 4500">
+                                <span class="absolute left-3.5 top-2.5 text-slate-500 font-bold">$</span>
+                                <input type="number" name="Monthly Income USD" id="monthlyIncome" min="0" required class="w-full pl-8 pr-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-xs md:text-sm bg-white" placeholder="e.g. 4500">
                             </div>
                         </div>
                     </div>
 
                     <!-- External Credit Check Affiliate Banner -->
-                    <div class="bg-gradient-to-r from-amber-500/10 via-amber-50/40 to-white border border-amber-300/80 rounded-2xl p-4 md:p-5 space-y-4">
-                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                            <div class="space-y-1">
-                                <h4 class="font-bold text-slate-900 flex items-center gap-2 text-sm md:text-base">
-                                    <i class="fa-solid fa-chart-line text-amber-600"></i> Step 1: Perform Your Credit Check <span class="text-red-500">*</span>
+                    <div class="bg-amber-50/60 border border-amber-200/80 rounded-2xl p-3.5 space-y-3">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-xs md:text-sm flex items-center gap-1.5">
+                                    <i class="fa-solid fa-chart-line text-amber-600"></i> Step 1: Credit Check <span class="text-red-500">*</span>
                                 </h4>
-                                <p class="text-xs text-slate-600 leading-relaxed">
-                                    Click the button to complete your official instant credit report, then upload your credit report screenshot below.
-                                </p>
+                                <p class="text-[11px] text-slate-600">Complete instant credit report and upload proof.</p>
                             </div>
-                            <a href="https://afflat3b2.com/trk/lnk/8891C253-ACB3-4716-8A39-7318DAC08EBB/?o=32670&amp;c=918277&amp;a=743959&amp;k=5D774E3B48750F88E199847D4D0E67EA&amp;l=38512&amp;s1=TRS_R15" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-amber-400 text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-xs whitespace-nowrap">
-                                <span>Check Credit Score Now</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            <a href="https://afflat3b2.com/trk/lnk/8891C253-ACB3-4716-8A39-7318DAC08EBB/?o=32670&amp;c=918277&amp;a=743959&amp;k=5D774E3B48750F88E199847D4D0E67EA&amp;l=38512&amp;s1=TRS_R15" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-amber-400 text-[11px] font-bold px-3 py-2 rounded-xl transition">
+                                <span>Check Score</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
                         </div>
 
-                        <hr class="border-amber-200/80">
+                        <hr class="border-amber-200/60">
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 pt-1">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">
-                                    Credit Score <span class="text-slate-400 font-normal">(Optional)</span>
-                                </label>
-                                <input type="number" name="Credit Score" id="creditScoreInput" min="300" max="850" class="w-full px-3.5 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-sm text-slate-800 font-bold bg-white" placeholder="e.g. 720">
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Credit Score <span class="text-slate-400 font-normal">(Optional)</span></label>
+                                <input type="number" name="Credit Score" id="creditScoreInput" min="300" max="850" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white" placeholder="e.g. 720">
                             </div>
-
                             <div>
-                                <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">
-                                    Upload Credit Report Screenshot <span class="text-red-500">*</span>
-                                </label>
-                                <input type="file" name="Credit Check Screenshot" id="creditProof" accept="image/*,video/*,.pdf" required class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-3.5 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-900 file:text-amber-400 hover:file:bg-slate-800 cursor-pointer border border-slate-300 rounded-xl p-1 bg-white">
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Credit Screenshot <span class="text-red-500">*</span></label>
+                                <input type="file" name="Credit Check Screenshot" id="creditProof" accept="image/*,.pdf" required class="w-full text-[11px] text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-slate-900 file:text-amber-400 border border-slate-300 rounded-xl p-1 bg-white">
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <!-- SECTION 4: Move-in & Tour Appointment -->
-            <div class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
-                <div class="bg-slate-100/80 px-4 md:px-6 py-3.5 border-b border-slate-200 flex items-center gap-3">
-                    <span class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs md:text-sm shadow-xs">4</span>
-                    <h3 class="text-base md:text-lg font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fa-regular fa-calendar-check text-amber-600"></i> Schedule &amp; Move-in Date
+            <!-- SECTION 4: Tour & Move-in Date -->
+            <div class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-100/80 px-4 md:px-6 py-3 border-b border-slate-200 flex items-center gap-2.5">
+                    <span class="w-6 h-6 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs">4</span>
+                    <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-1.5">
+                        <i class="fa-regular fa-calendar-check text-amber-600"></i> Schedule Dates
                     </h3>
                 </div>
-                <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+                <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-3 gap-3">
                     <div>
-                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Intended Move-in Date <span class="text-red-500">*</span></label>
-                        <input type="date" name="Move-In Date" id="moveInDate" required class="w-full px-3.5 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-sm text-slate-800 bg-white">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Move-in Date <span class="text-red-500">*</span></label>
+                        <input type="date" name="Move-In Date" id="moveInDate" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none text-xs bg-white">
                     </div>
                     <div>
-                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">In-Person Tour Date <span class="text-red-500">*</span></label>
-                        <input type="date" name="Appointment Date" id="appointmentDate" required class="w-full px-3.5 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-sm text-slate-800 bg-white">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Tour Date <span class="text-red-500">*</span></label>
+                        <input type="date" name="Appointment Date" id="appointmentDate" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none text-xs bg-white">
                     </div>
                     <div>
-                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">Appointment Time Slot <span class="text-red-500">*</span></label>
-                        <input type="time" name="Appointment Time" id="appointmentTime" required class="w-full px-3.5 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition text-sm text-slate-800 bg-white">
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Time Slot <span class="text-red-500">*</span></label>
+                        <input type="time" name="Appointment Time" id="appointmentTime" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none text-xs bg-white">
                     </div>
                 </div>
             </div>
 
-            <!-- SECTION 5: Security Deposit & Application Fee Notice -->
-            <div class="bg-amber-50/70 rounded-2xl md:rounded-3xl shadow-sm border border-amber-200/90 overflow-hidden p-4 md:p-6 relative">
-                <div class="flex items-start gap-3 md:gap-4">
-                    <div class="bg-amber-500 text-slate-950 p-3 rounded-2xl hidden sm:flex items-center justify-center text-xl shadow-xs">
-                        <i class="fa-solid fa-shield-heart"></i>
+            <!-- SECTION 5: Policy -->
+            <div class="bg-amber-50/70 rounded-2xl md:rounded-3xl shadow-sm border border-amber-200 p-4">
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs">5</span>
+                        <h3 class="text-sm md:text-base font-bold text-slate-900">Application Fee Policy</h3>
                     </div>
-                    <div class="space-y-3 w-full">
-                        <div class="flex items-center gap-2">
-                            <span class="w-6 h-6 md:w-7 md:h-7 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs">5</span>
-                            <h3 class="text-base md:text-lg font-bold text-slate-900">Application Fee &amp; Rental Policy</h3>
-                        </div>
-                        <div class="bg-white p-3.5 md:p-4 rounded-2xl border border-amber-200/90 shadow-2xs space-y-2 text-xs md:text-sm text-slate-700">
-                            <p class="font-extrabold text-slate-900 text-sm md:text-base flex items-center gap-2">
-                                <i class="fa-solid fa-circle-check text-emerald-600"></i> Application Fee: Only $100 (100% Fully Refundable)
-                            </p>
-                            <p class="leading-relaxed">
-                                Submit your application now to reserve the property exclusively for you. You may cancel your application at any time with a 100% full refund guarantee.
-                            </p>
-                            <p class="leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200 font-medium text-slate-800 text-xs md:text-sm">
-                                <i class="fa-solid fa-info-circle text-amber-600 mr-1"></i> Upon moving into the property, this $100 fee will be completely refunded to you or credited directly toward your first month's rent.
-                            </p>
-                        </div>
-
-                        <label class="flex items-start gap-2.5 md:gap-3 cursor-pointer pt-1">
-                            <input type="checkbox" name="Terms Accepted" id="termsAccepted" required class="mt-0.5 w-4 h-4 md:w-5 md:h-5 rounded border-slate-300 text-amber-600 focus:ring-amber-500 accent-amber-600">
-                            <span class="text-xs md:text-sm font-semibold text-slate-800 leading-snug">
-                                I have read, understood, and accept the $100 fully refundable application fee policy and security deposit terms. <span class="text-red-500">*</span>
-                            </span>
-                        </label>
+                    <div class="bg-white p-3 rounded-xl border border-amber-200 text-xs text-slate-700 space-y-1">
+                        <p class="font-bold text-slate-900">Fee: $100 (100% Refundable)</p>
+                        <p>Fully refundable at any time before move-in, or credited directly towards your first month's rent.</p>
                     </div>
+                    <label class="flex items-start gap-2 cursor-pointer pt-1">
+                        <input type="checkbox" name="Terms Accepted" id="termsAccepted" required class="mt-0.5 w-4 h-4 rounded border-slate-300 text-amber-600 accent-amber-600">
+                        <span class="text-xs font-semibold text-slate-800">
+                            I accept the $100 fully refundable application fee policy terms. <span class="text-red-500">*</span>
+                        </span>
+                    </label>
                 </div>
             </div>
 
-            <!-- SECTION 6: Verification & Payment -->
-            <div class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
-                <div class="bg-slate-100/80 px-4 md:px-6 py-3.5 border-b border-slate-200 flex items-center gap-3">
-                    <span class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs md:text-sm shadow-xs">6</span>
-                    <h3 class="text-base md:text-lg font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fa-solid fa-credit-card text-amber-600"></i> Verification &amp; Payment Method <span class="text-red-500">*</span>
-                    </h3>
-                </div>
-                <div class="p-4 md:p-6 space-y-5 md:space-y-6">
-                    <div>
-                        <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-2">Select Preferred Payment Method <span class="text-red-500">*</span></label>
-                        <div class="grid grid-cols-3 gap-2.5 md:gap-4">
-                            <label class="relative flex flex-col items-center justify-center p-3 md:p-4 border-2 rounded-xl md:rounded-2xl cursor-pointer transition bg-slate-50/50 border-slate-200 hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50">
-                                <input type="radio" name="Payment Method" value="Cash App" required class="sr-only">
-                                <div class="w-8 h-8 md:w-10 md:h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-base md:text-xl font-bold mb-1.5 md:mb-2">
-                                    <i class="fa-solid fa-dollar-sign"></i>
-                                </div>
-                                <span class="font-bold text-slate-800 text-xs md:text-sm text-center">Cash App</span>
-                            </label>
-
-                            <label class="relative flex flex-col items-center justify-center p-3 md:p-4 border-2 rounded-xl md:rounded-2xl cursor-pointer transition bg-slate-50/50 border-slate-200 hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50">
-                                <input type="radio" name="Payment Method" value="Chime Bank" class="sr-only">
-                                <div class="w-8 h-8 md:w-10 md:h-10 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-base md:text-xl font-bold mb-1.5 md:mb-2">
-                                    <i class="fa-solid fa-building-columns"></i>
-                                </div>
-                                <span class="font-bold text-slate-800 text-xs md:text-sm text-center">Chime Bank</span>
-                            </label>
-
-                            <label class="relative flex flex-col items-center justify-center p-3 md:p-4 border-2 rounded-xl md:rounded-2xl cursor-pointer transition bg-slate-50/50 border-slate-200 hover:border-amber-400 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50">
-                                <input type="radio" name="Payment Method" value="Apple Pay" class="sr-only">
-                                <div class="w-8 h-8 md:w-10 md:h-10 bg-slate-200 text-slate-800 rounded-full flex items-center justify-center text-base md:text-xl font-bold mb-1.5 md:mb-2">
-                                    <i class="fa-brands fa-apple"></i>
-                                </div>
-                                <span class="font-bold text-slate-800 text-xs md:text-sm text-center">Apple Pay</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="bg-blue-50/80 border-l-4 border-blue-600 p-3.5 md:p-4 rounded-r-2xl">
-                        <div class="flex items-start gap-2.5 md:gap-3">
-                            <i class="fa-solid fa-circle-info text-blue-600 text-base md:text-lg mt-0.5"></i>
-                            <div class="text-xs md:text-sm text-slate-700 leading-relaxed">
-                                <p class="font-bold text-slate-900 mb-0.5">Payment Instructions:</p>
-                                Please reach out directly to the representative or landlord who referred you to this portal. Request their official payment tag / cashtag / handle, complete the $100 Application Fee, and upload your payment receipt below.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-                        <div>
-                            <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">
-                                Transaction ID / Ref No <span class="text-slate-400 font-normal">(Optional)</span>
-                            </label>
-                            <input type="text" name="Transaction ID" id="transactionId" class="w-full px-3.5 py-2.5 md:py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition font-mono uppercase text-sm text-slate-800 bg-white" placeholder="e.g. TXN98765432">
-                        </div>
-
-                        <div>
-                            <label class="block text-xs md:text-sm font-semibold text-slate-700 mb-1">
-                                Upload Payment Screenshot <span class="text-red-500">*</span>
-                            </label>
-                            <input type="file" name="Payment Screenshot" id="paymentProof" accept="image/*,video/*,.pdf" required class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-3.5 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-900 file:text-amber-400 hover:file:bg-slate-800 cursor-pointer border border-slate-300 rounded-xl p-1 bg-white">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SECTION 7: Applicant Digital Signature -->
-            <div class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
-                <div class="bg-slate-100/80 px-4 md:px-6 py-3.5 border-b border-slate-200 flex items-center gap-3">
-                    <span class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs md:text-sm shadow-xs">7</span>
-                    <h3 class="text-base md:text-lg font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fa-solid fa-pen-nib text-amber-600"></i> Digital Signature <span class="text-red-500">*</span>
+            <!-- SECTION 6: Payment -->
+            <div class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-100/80 px-4 md:px-6 py-3 border-b border-slate-200 flex items-center gap-2.5">
+                    <span class="w-6 h-6 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs">6</span>
+                    <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-1.5">
+                        <i class="fa-solid fa-credit-card text-amber-600"></i> Payment &amp; Verification <span class="text-red-500">*</span>
                     </h3>
                 </div>
                 <div class="p-4 md:p-6 space-y-4">
-                    <p class="text-xs md:text-sm text-slate-600">Please draw your signature below using your finger, stylus, or mouse to authorize this application.</p>
-                    
-                    <div class="border border-slate-300 rounded-2xl p-2 bg-slate-50 relative">
-                        <canvas id="signaturePad" width="600" height="180" class="signature-canvas w-full h-44 bg-white rounded-xl border border-dashed border-slate-300"></canvas>
-                        <!-- Hidden input field to hold Signature Base64 Data URL for Google Sheet / Formspree -->
-                        <input type="hidden" name="Applicant Signature Data" id="signatureDataInput" required>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-2">Select Payment Method <span class="text-red-500">*</span></label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <label class="flex flex-col items-center justify-center p-3 border-2 rounded-xl cursor-pointer bg-slate-50 border-slate-200 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+                                <input type="radio" name="Payment Method" value="Cash App" required class="sr-only">
+                                <i class="fa-solid fa-dollar-sign text-emerald-600 text-lg mb-1"></i>
+                                <span class="font-bold text-slate-800 text-[11px]">Cash App</span>
+                            </label>
+                            <label class="flex flex-col items-center justify-center p-3 border-2 rounded-xl cursor-pointer bg-slate-50 border-slate-200 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+                                <input type="radio" name="Payment Method" value="Chime Bank" class="sr-only">
+                                <i class="fa-solid fa-building-columns text-green-700 text-lg mb-1"></i>
+                                <span class="font-bold text-slate-800 text-[11px]">Chime</span>
+                            </label>
+                            <label class="flex flex-col items-center justify-center p-3 border-2 rounded-xl cursor-pointer bg-slate-50 border-slate-200 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50">
+                                <input type="radio" name="Payment Method" value="Apple Pay" class="sr-only">
+                                <i class="fa-brands fa-apple text-slate-800 text-lg mb-1"></i>
+                                <span class="font-bold text-slate-800 text-[11px]">Apple Pay</span>
+                            </label>
+                        </div>
                     </div>
 
+                    <div class="bg-blue-50 border-l-4 border-blue-600 p-3 rounded-r-xl text-[11px] text-slate-700">
+                        <span class="font-bold text-slate-900">Note:</span> Request official payment tag from your representative, complete fee, and upload screenshot.
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Transaction ID <span class="text-slate-400 font-normal">(Optional)</span></label>
+                            <input type="text" name="Transaction ID" id="transactionId" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-mono text-xs uppercase bg-white" placeholder="e.g. TXN98765">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Payment Screenshot <span class="text-red-500">*</span></label>
+                            <input type="file" name="Payment Screenshot" id="paymentProof" accept="image/*,.pdf" required class="w-full text-[11px] text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-slate-900 file:text-amber-400 border border-slate-300 rounded-xl p-1 bg-white">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 7: Digital Signature -->
+            <div class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-100/80 px-4 md:px-6 py-3 border-b border-slate-200 flex items-center gap-2.5">
+                    <span class="w-6 h-6 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-xs">7</span>
+                    <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-1.5">
+                        <i class="fa-solid fa-pen-nib text-amber-600"></i> Digital Signature <span class="text-red-500">*</span>
+                    </h3>
+                </div>
+                <div class="p-4 md:p-6 space-y-3">
+                    <p class="text-xs text-slate-600">Draw your signature below using your finger or mouse.</p>
+                    <div class="border border-slate-300 rounded-xl p-1.5 bg-slate-50 relative">
+                        <canvas id="signaturePad" width="600" height="150" class="signature-canvas w-full h-36 bg-white rounded-lg border border-dashed border-slate-300"></canvas>
+                        <input type="hidden" name="Applicant Signature Data" id="signatureDataInput" required>
+                    </div>
                     <div class="flex items-center justify-between">
-                        <button type="button" onclick="clearSignature()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg text-xs font-semibold transition">
-                            <i class="fa-solid fa-rotate-left"></i> Clear Signature
+                        <button type="button" onclick="clearSignature()" class="px-3 py-1 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg text-xs font-semibold">
+                            <i class="fa-solid fa-rotate-left"></i> Clear
                         </button>
-                        <span id="signatureStatus" class="text-xs font-semibold text-slate-400">Signature Empty</span>
+                        <span id="signatureStatus" class="text-xs font-semibold text-slate-400">Empty</span>
                     </div>
                 </div>
             </div>
 
             <!-- Submit Button -->
-            <div class="pt-4 no-print">
-                <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold text-base md:text-lg py-4 rounded-2xl shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2">
+            <div class="pt-2 no-print">
+                <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold text-sm md:text-base py-3.5 rounded-xl shadow-md transition flex items-center justify-center gap-2">
                     <i class="fa-solid fa-paper-plane"></i>
-                    <span>Submit Complete Application</span>
+                    <span>Submit Application</span>
                 </button>
             </div>
 
@@ -444,38 +393,22 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 no-print">
-        <div class="max-w-4xl mx-auto px-4 space-y-2">
-            <p>&copy; 2026 Haven Rentals USA. All rights reserved.</p>
-            <p class="text-[11px] text-slate-400">Secure 256-Bit SSL Encrypted Verification Portal</p>
-        </div>
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 no-print">
+        <p>&copy; 2026 Haven Rentals USA. All rights reserved.</p>
     </footer>
 
-    <!-- Script Section for Field Toggles & Signature Canvas -->
+    <!-- Script Section -->
     <script>
-        // Toggle Vehicle Details Field
         function toggleVehicleDetails(show) {
             const field = document.getElementById('vehicleDetails');
-            if (show) {
-                field.classList.remove('hidden');
-            } else {
-                field.classList.add('hidden');
-                field.value = '';
-            }
+            if (show) { field.classList.remove('hidden'); } else { field.classList.add('hidden'); field.value = ''; }
         }
 
-        // Toggle Pet Details Field
         function togglePetDetails(show) {
             const field = document.getElementById('petDetails');
-            if (show) {
-                field.classList.remove('hidden');
-            } else {
-                field.classList.add('hidden');
-                field.value = '';
-            }
+            if (show) { field.classList.remove('hidden'); } else { field.classList.add('hidden'); field.value = ''; }
         }
 
-        // Signature Canvas Logic
         const canvas = document.getElementById('signaturePad');
         const ctx = canvas.getContext('2d');
         const signatureDataInput = document.getElementById('signatureDataInput');
@@ -483,14 +416,13 @@
         let isDrawing = false;
         let hasSigned = false;
 
-        // Fix Canvas DPI / Scaling
         function resizeCanvas() {
             const ratio = Math.max(window.devicePixelRatio || 1, 1);
             const rect = canvas.getBoundingClientRect();
             canvas.width = rect.width * ratio;
             canvas.height = rect.height * ratio;
             ctx.scale(ratio, ratio);
-            ctx.lineWidth = 2.5;
+            ctx.lineWidth = 2;
             ctx.lineCap = 'round';
             ctx.strokeStyle = '#0f172a';
         }
@@ -502,16 +434,11 @@
             const rect = canvas.getBoundingClientRect();
             let clientX = e.clientX;
             let clientY = e.clientY;
-
             if (e.touches && e.touches.length > 0) {
                 clientX = e.touches[0].clientX;
                 clientY = e.touches[0].clientY;
             }
-
-            return {
-                x: clientX - rect.left,
-                y: clientY - rect.top
-            };
+            return { x: clientX - rect.left, y: clientY - rect.top };
         }
 
         function startDrawing(e) {
@@ -533,17 +460,13 @@
         }
 
         function stopDrawing() {
-            if (isDrawing) {
-                isDrawing = false;
-                ctx.closePath();
-            }
+            if (isDrawing) { isDrawing = false; ctx.closePath(); }
         }
 
         function updateSignatureData() {
             if (hasSigned) {
-                const dataURL = canvas.toDataURL('image/png');
-                signatureDataInput.value = dataURL;
-                signatureStatus.textContent = "Signature Captured ✓";
+                signatureDataInput.value = canvas.toDataURL('image/png');
+                signatureStatus.textContent = "Signed ✓";
                 signatureStatus.className = "text-xs font-semibold text-emerald-600";
             }
         }
@@ -552,26 +475,23 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             hasSigned = false;
             signatureDataInput.value = '';
-            signatureStatus.textContent = "Signature Empty";
+            signatureStatus.textContent = "Empty";
             signatureStatus.className = "text-xs font-semibold text-slate-400";
         }
 
-        // Mouse Events
         canvas.addEventListener('mousedown', startDrawing);
         canvas.addEventListener('mousemove', draw);
         canvas.addEventListener('mouseup', stopDrawing);
         canvas.addEventListener('mouseleave', stopDrawing);
 
-        // Touch Events for Mobile
         canvas.addEventListener('touchstart', startDrawing, { passive: false });
         canvas.addEventListener('touchmove', draw, { passive: false });
         canvas.addEventListener('touchend', stopDrawing);
 
-        // Form Submit Validation
         function handleFormSubmit(e) {
             if (!hasSigned || !signatureDataInput.value) {
                 e.preventDefault();
-                alert('Please provide your digital signature before submitting the form.');
+                alert('Please provide your digital signature before submitting.');
                 canvas.scrollIntoView({ behavior: 'smooth' });
                 return false;
             }
